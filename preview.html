@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Previews</title>
+
+    <!-- Minified version of SimpleCSS (https://github.com/kevquirk/simple.css/wiki/Getting-Started-With-Simple.css) -->
+    <link rel="stylesheet" href="https://cdn.simplecss.org/simple.min.css">
+    <!-- Un-Minified version -->
+    <!-- <link rel="stylesheet" href="https://cdn.simplecss.org/simple.css"> -->
+
+    <link rel="stylesheet" type="text/css" href="style.css">
+  </head>
+
+  <body>
+    <h1> Genuary Previews </h1>
+    <div id="parent_div">
+      <div id="preview_container">
+        <video src="outputs/01_vid.mp4" alt="preview", loop="true", autoplay="true">
+      </div>
+      <div id="grid"></div>
+    </div>
+
+    <script>  
+const grid = document.getElementById("grid");
+
+for (let i = 0; i < 32; i++) {
+  // get the preview container for the video
+  const previewContainer = document.getElementById("preview_container");
+
+  // create a thumbnail image element
+  const thumbnail = document.createElement("img");
+  thumbnail.src = `outputs/0${i%3 + 1}_frame.png`;
+  thumbnail.id = `thumbnail-${i%3 + 1}`;
+  thumbnail.className = "thumbnail";
+
+  // attach a click event listener to the thumbnail
+  thumbnail.addEventListener("click", () => {
+    // Empty the preview container
+    previewContainer.innerHTML = "";
+
+    // create a new video element
+    const video = document.createElement("video");
+    video.src = `outputs/0${i%3 + 1}_vid.mp4`;
+    video.autoplay = true;
+    video.loop = true;
+
+    // Add the video to the preview container
+    previewContainer.innerHTML = video.outerHTML;
+  });
+
+  // add the thumbnail to the grid
+  grid.appendChild(thumbnail);
+}
+
+    </script>
+  </body>
+</html>
