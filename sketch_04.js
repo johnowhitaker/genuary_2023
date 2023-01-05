@@ -1,4 +1,4 @@
-// Create a bunch of dots bouncing in a circle
+// Create a bunch of circles highlighting their intersections
 
 // Set up recording
 let chunks = [];
@@ -18,8 +18,11 @@ function setup() {
   // Create the canvas
   createCanvas(512, 512);
 
-  // Draw a background (dark purple)
-  background(0, 0, 64);
+  // Black Background
+  background(0);
+
+  // Set to HSB
+  colorMode(HSB);
 
   // Set Up Recording (high quality)
   chunks.length = 0;
@@ -31,21 +34,27 @@ function setup() {
     }
   };
   recorder.onstop = exportVideo;
+
+  // Start Recording
+  recorder.start();
 }
 
 function draw() {
 
+  // End if we've done 50 circles
+  if (frameCount > 150) {
+    noLoop();
+    recorder.stop();
+    return;
+  }
+
+  // Draw a circle
+  stroke(255);
+  strokeWeight(1);
+  hue = int(random(0, 25))*10
+  fill(hue, 100, 100, 0.5);
+  circle(random(0, width), random(0, height), random(0, 100));
 
   frameCount += 1;
-
-  // // Start recording after 1 second
-  // if (frameCount == 1*60) {
-  //   recorder.start();
-  // }
-
-  // // Stop recording after 512 frames (1 loop)
-  // if (frameCount == 1*60 + 512*2) {
-  //   recorder.stop();
-  // };
 
 }
