@@ -26,7 +26,15 @@
     <script>  
 const grid = document.getElementById("grid");
 
-let n_done = 4
+let notes = [
+  "Day 1 ('Perfect Loop') was mostly about getting my environment set up nicely and figuring out how to record the canvas and time it so it loops perfectly",
+  "Day 2 was 'Done in 10 minutes', so I hastily modified day 1 to make it more interesting",
+  "Day 3 ('Glitch') involved coming up with ways to corrupt day 2's sketch",
+  "Day 4 ('Intersection') I missed so this quick doodle was done on day 5",
+  "Day 5 ('Debug View') - a fake debug view for day 4"
+]
+
+let n_done = 5
 for (let i = 0; i < 32; i++) {
   // get the preview container for the video
   const previewContainer = document.getElementById("preview_container");
